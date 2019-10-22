@@ -23,7 +23,7 @@
 */
 
 #define SOC_LED_NUM		4		//if num is changed, you need to modify the function of soc_to_led_by_num.
-#define SOC_LED_DELT	(100/4)
+#define SOC_LED_DELT	(100/SOC_LED_NUM)
 #define SOC_DSG_MIN		5
 
 static void soc_to_led_by_num(uint8_t num)
@@ -36,10 +36,10 @@ static void soc_to_led_by_num(uint8_t num)
 	hal_app_write(DRV_GPIO,(uint8_t *)&close_led,sizeof(uint32_t),IDX_GPIO_LED2,NULL);
 	hal_app_write(DRV_GPIO,(uint8_t *)&close_led,sizeof(uint32_t),IDX_GPIO_LED3,NULL);
 	hal_app_write(DRV_GPIO,(uint8_t *)&close_led,sizeof(uint32_t),IDX_GPIO_LED4,NULL);
-	//hal_app_write(DRV_GPIO,(uint8_t *)&close_led,sizeof(uint32_t),LED5_PIN,NULL);
+	//hal_app_write(DRV_GPIO,(uint8_t *)&close_led,sizeof(uint32_t),IDX_GPIO_LED5,NULL);
 	
 	//set all led
-	//if(num > 4)		{hal_app_write(DRV_GPIO,(uint8_t *)&open_led,sizeof(uint32_t),LED5_PIN,NULL);}	//light 4 led
+	//if(num > 4)		{hal_app_write(DRV_GPIO,(uint8_t *)&open_led,sizeof(uint32_t),IDX_GPIO_LED5,NULL);}	//light 4 led
 	if(num > 3)		{hal_app_write(DRV_GPIO,(uint8_t *)&open_led,sizeof(uint32_t),IDX_GPIO_LED4,NULL);}	//light 4 led
 	if(num > 2)		{hal_app_write(DRV_GPIO,(uint8_t *)&open_led,sizeof(uint32_t),IDX_GPIO_LED3,NULL);}	//light 3 led
 	if(num > 1)		{hal_app_write(DRV_GPIO,(uint8_t *)&open_led,sizeof(uint32_t),IDX_GPIO_LED2,NULL);}	//light 2 led
